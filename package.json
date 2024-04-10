@@ -1,25 +1,33 @@
 {
-  "name": "api_danfe",
-  "version": "2.0.0",
-  "author": {
-    "name": "Henrique Tardivo"
-  },
-  "main": "index.ts",
-  "dependencies": {
-    "inscricaoestadual": "0.0.2",
-    "pdfkit": "^0.13.0",
-    "xml-js": "^1.6.11"
-  },
-  "devDependencies": {
-    "@types/pdfkit": "^0.12.6",
-    "@types/xml-js": "^1.0.0",
-    "typescript": "^4.6.3",
-    "@types/bun": "latest"
-  },
-  "license": "MIT",
-  "scripts": {
-    "dev": " bun --hot index.ts",
-    "start": "bun index.ts",
-    "build": "bun build index.ts"
-  }
+	"name": "nfe-xml-to-pdf",
+	"version": "1.0.0",
+	"author": {
+		"name": "Denis Bessa"
+	},
+	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"dependencies": {
+		"@vercel/node": "^3.2.7",
+		"inscricaoestadual": "^0.0.5",
+		"pdfkit": "^0.15.0",
+		"vercel": "^35.2.2",
+		"xml-js": "^1.6.11"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.8.3",
+		"@types/pdfkit": "^0.13.4",
+		"@types/xml-js": "^1.0.0",
+		"tsc-alias": "^1.8.10",
+		"typescript": "^5.5.4"
+	},
+	"license": "MIT",
+	"scripts": {
+		"dev": " bun --hot ./src/index.ts",
+		"fonts-copy": "cp -r ./src/modules/pdf_generator/danfe-dacte/lib/geradores/fontes ./dist/modules/pdf_generator/danfe-dacte/lib/geradores/fontes",
+		"build": "tsc && tsc-alias && npm run fonts-copy"
+	},
+	"files": [
+		"dist/**/*"
+	]
 }

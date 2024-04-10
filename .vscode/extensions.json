@@ -1,0 +1,30 @@
+{
+	"recommendations": [
+		"wallabyjs.console-ninja",
+		"naumovs.color-highlight",
+		"donjayamanne.githistory",
+		"github.copilot",
+		"github.vscode-pull-request-github",
+		"oderwat.indent-rainbow",
+		"ms-ceintl.vscode-language-pack-pt-br",
+		"gruntfuggly.todo-tree",
+		"redhat.vscode-yaml",
+		"shardulm94.trailing-spaces",
+		"github.remotehub",
+		"yoavbls.pretty-ts-errors",
+		"tonybaloney.vscode-pets",
+		"rcore.rcore-unused-css-classes",
+		"github.vscode-github-actions",
+		"inferrinizzard.prettier-sql-vscode",
+		"postman.postman-for-vscode",
+		"github.copilot-chat",
+		"formulahendry.auto-rename-tag",
+		"hashicorp.terraform",
+		"eamodio.gitlens",
+		"golang.go",
+		"dae.vscode-refresh-browser",
+		"cweijan.vscode-postgresql-client2",
+		"mxsdev.typescript-explorer",
+		"tamasfe.even-better-toml"
+	]
+}

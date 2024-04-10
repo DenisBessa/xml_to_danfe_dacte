@@ -1,0 +1,3 @@
+{
+	"locale": "en" // the Pretty Typescript Errors extensions only works with the English locale
+}
