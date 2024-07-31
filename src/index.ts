@@ -7,6 +7,8 @@ import type { INfe } from "./modules/interfaces/INfe";
 
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 
+export const dynamic = "force-dynamic";
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
 	try {
 		const {
