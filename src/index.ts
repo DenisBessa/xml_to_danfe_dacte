@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { JsonToCTE } from "./modules/XMLtoPDF/UseCase/json-to-cte-use-case";
 import { JsonToDanfe } from "./modules/XMLtoPDF/UseCase/json-to-danfe-use-case";
 import { xmlToJson } from "./modules/XMLtoPDF/UseCase/xml-to-json";
@@ -8,7 +9,14 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
 	try {
-		const { body: xml } = req;
+		const {
+			body: xml,
+			headers: { authorization },
+		} = req;
+
+		if (!authorization || authorization !== process.env.XML_TO_DANFE_SECRET) {
+			throw new Error("Missing authorization header");
+		}
 
 		// check if body is a text
 		if (typeof xml !== "string" || !xml.length) throw new Error("Invalid XML");

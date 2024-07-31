@@ -37,18 +37,21 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = handler;
+require("dotenv/config");
 var json_to_cte_use_case_1 = require("./modules/XMLtoPDF/UseCase/json-to-cte-use-case");
 var json_to_danfe_use_case_1 = require("./modules/XMLtoPDF/UseCase/json-to-danfe-use-case");
 var xml_to_json_1 = require("./modules/XMLtoPDF/UseCase/xml-to-json");
 function handler(req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var xml, isDanfe, isDacte, json, pdfBase64, _a, error_1;
+        var xml, authorization, isDanfe, isDacte, json, pdfBase64, _a, error_1;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
                     _b.trys.push([0, 6, , 7]);
-                    xml = req.body;
-                    console.log(xml);
+                    xml = req.body, authorization = req.headers.authorization;
+                    if (!authorization || authorization !== process.env.XML_TO_DANFE_SECRET) {
+                        throw new Error("Missing authorization header");
+                    }
                     // check if body is a text
                     if (typeof xml !== "string" || !xml.length)
                         throw new Error("Invalid XML");

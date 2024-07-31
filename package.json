@@ -9,6 +9,7 @@
 	"types": "dist/index.d.ts",
 	"dependencies": {
 		"@vercel/node": "^3.2.7",
+		"dotenv": "^16.4.5",
 		"inscricaoestadual": "^0.0.5",
 		"pdfkit": "^0.15.0",
 		"vercel": "^35.2.2",
