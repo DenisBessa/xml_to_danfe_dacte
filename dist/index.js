@@ -36,11 +36,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.dynamic = void 0;
 exports.default = handler;
 require("dotenv/config");
 var json_to_cte_use_case_1 = require("./modules/XMLtoPDF/UseCase/json-to-cte-use-case");
 var json_to_danfe_use_case_1 = require("./modules/XMLtoPDF/UseCase/json-to-danfe-use-case");
 var xml_to_json_1 = require("./modules/XMLtoPDF/UseCase/xml-to-json");
+exports.dynamic = "force-dynamic";
 function handler(req, res) {
     return __awaiter(this, void 0, void 0, function () {
         var xml, authorization, isDanfe, isDacte, json, pdfBase64, _a, error_1;
