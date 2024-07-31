@@ -73,7 +73,6 @@ function handler(req, res) {
                     _b.label = 5;
                 case 5:
                     pdfBase64 = _a;
-                    res.setHeader("Cache-Control", "public, s-maxage=1");
                     return [2 /*return*/, res.json({ pdfBase64: pdfBase64 })];
                 case 6:
                     error_1 = _b.sent();

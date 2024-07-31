@@ -33,8 +33,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 			? await new JsonToDanfe().jsonToPDF(json as INfe)
 			: await new JsonToCTE().jsonToPDF(json as IDaCte);
 
-		res.setHeader("Cache-Control", "public, s-maxage=1");
-
 		return res.json({ pdfBase64: pdfBase64 });
 	} catch (error) {
 		console.error(error);
