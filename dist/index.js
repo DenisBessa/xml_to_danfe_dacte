@@ -73,7 +73,7 @@ function handler(req, res) {
                     _b.label = 5;
                 case 5:
                     pdfBase64 = _a;
-                    return [2 /*return*/, res.json(pdfBase64)];
+                    return [2 /*return*/, res.json({ pdfBase64: pdfBase64 })];
                 case 6:
                     error_1 = _b.sent();
                     console.error(error_1);
