@@ -7,8 +7,6 @@ import type { INfe } from "./modules/interfaces/INfe";
 
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 
-export const dynamic = "force-dynamic";
-
 export default async function handler(req: VercelRequest, res: VercelResponse) {
 	try {
 		const {
@@ -34,6 +32,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 		const pdfBase64 = isDanfe
 			? await new JsonToDanfe().jsonToPDF(json as INfe)
 			: await new JsonToCTE().jsonToPDF(json as IDaCte);
+
+		res.setHeader("Cache-Control", "public, s-maxage=1");
 
 		return res.json({ pdfBase64: pdfBase64 });
 	} catch (error) {
