@@ -326,7 +326,7 @@ exports.default = (function (danfe, originalArgs, callback) {
             var x1;
             var x2;
             var y;
-            linha.forEach(function (duplicata, indiceDaDuplicata) {
+            [linha].flat().forEach(function (duplicata, indiceDaDuplicata) {
                 x1 = indiceDaDuplicata * larguraDaDuplicata;
                 x2 = x1 + larguraDaDuplicata - larguraDoFormulario;
                 y =

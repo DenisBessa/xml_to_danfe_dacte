@@ -408,7 +408,7 @@ export default (danfe, originalArgs, callback) => {
 			let x2;
 			let y;
 
-			linha.forEach((duplicata, indiceDaDuplicata) => {
+			[linha].flat().forEach((duplicata, indiceDaDuplicata) => {
 				x1 = indiceDaDuplicata * larguraDaDuplicata;
 				x2 = x1 + larguraDaDuplicata - larguraDoFormulario;
 				y =
