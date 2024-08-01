@@ -34,6 +34,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 			: await new JsonToCTE().jsonToPDF(json as IDaCte);
 
 		return res.json({ pdfBase64: pdfBase64 });
+
+		// the configs below make this API return a PDF file. Uncomment them to test it
+		// const pdfBuffer = Buffer.from(pdfBase64, "base64");
+
+		// res.setHeader("Content-Type", "application/pdf");
+		// res.send(pdfBuffer);
 	} catch (error) {
 		console.error(error);
 

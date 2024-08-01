@@ -31,6 +31,24 @@ class JsonToDanfe {
 			ICMS70: imposto.ICMS70,
 			ICMS90: imposto.ICMS90,
 			ICMS20: imposto.ICMS20,
+			ICMSSN: imposto.ICMSSN ?? {
+				...(imposto.ICMSSN101 ??
+					imposto.ICMSSN102 ??
+					imposto.ICMSSN201 ??
+					imposto.ICMSSN202 ??
+					imposto.ICMSSN500 ??
+					imposto.ICMSSN900 ??
+					imposto.ICMSPart),
+				CST:
+					imposto.ICMSSN102?.CSOSN ??
+					imposto.ICMSSN101?.CSOSN ??
+					imposto.ICMSSN102?.CSOSN ??
+					imposto.ICMSSN201?.CSOSN ??
+					imposto.ICMSSN202?.CSOSN ??
+					imposto.ICMSSN500?.CSOSN ??
+					imposto.ICMSSN900?.CSOSN ??
+					imposto.ICMSPart?.CST,
+			},
 		}[tipoIcms];
 	}
 
@@ -342,7 +360,15 @@ class JsonToDanfe {
 			Array.isArray(json.nfeProc?.NFe.infNFe.det)
 		) {
 			for (const item of json.nfeProc.NFe.infNFe.det) {
-				const icms = this.find_ICMS_prod(item.imposto.ICMS);
+				console.log(item);
+
+				console.log(item.imposto);
+
+				const icms = this.find_ICMS_prod(
+					item.imposto.ICMS || item.imposto.ICMSSN,
+				);
+
+				console.log(icms);
 
 				danfe.adicionarItem(
 					new Item()

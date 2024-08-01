@@ -28,7 +28,5 @@
 		"fonts-copy": "cp -r ./src/modules/pdf_generator/danfe-dacte/lib/geradores/fontes ./dist/modules/pdf_generator/danfe-dacte/lib/geradores/fontes",
 		"build": "tsc && tsc-alias && npm run fonts-copy"
 	},
-	"files": [
-		"dist/**/*"
-	]
+	"files": ["dist/**/*"]
 }
