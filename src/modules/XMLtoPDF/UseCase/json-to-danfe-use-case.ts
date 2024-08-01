@@ -375,7 +375,7 @@ class JsonToDanfe {
 						.comCodigo(item.prod?.cProd?._text)
 						.comDescricao(item.prod?.xProd?._text)
 						.comNcmSh(item.prod?.NCM?._text)
-						.comOCst(icms?.CST?._text)
+						.comOCst(`${icms?.orig?._text}${icms?.CST?._text}`)
 						.comCfop(item.prod?.CFOP?._text)
 						.comUnidade(String(item.prod?.uCom?._text).toUpperCase())
 						.comQuantidade(maskFields.maskNumber(item.prod?.qCom?._text))
@@ -402,7 +402,7 @@ class JsonToDanfe {
 					.comCodigo(json.nfeProc?.NFe.infNFe.det?.prod?.cProd?._text)
 					.comDescricao(json.nfeProc?.NFe.infNFe.det?.prod?.xProd?._text)
 					.comNcmSh(json.nfeProc?.NFe.infNFe.det?.prod?.NCM?._text)
-					.comOCst(icms?.CST?._text)
+					.comOCst(`${icms?.orig?._text}${icms?.CST?._text}`)
 					.comCfop(json.nfeProc?.NFe.infNFe.det?.prod?.CFOP?._text)
 					.comUnidade(
 						String(
