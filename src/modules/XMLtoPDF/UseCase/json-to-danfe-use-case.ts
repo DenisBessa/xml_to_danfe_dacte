@@ -19,7 +19,7 @@ import { MaskFields } from "@/utils/MaskFields";
 
 class JsonToDanfe {
 	find_ICMS_prod(imposto: any): Icms_generico {
-		const tipoIcms = JSON.stringify(imposto).substring(2, 8);
+		const tipoIcms = JSON.stringify(imposto)?.substring(2, 8);
 
 		return {
 			ICMS00: imposto.ICMS00,
