@@ -18,36 +18,36 @@ import Volumes from "@/modules/pdf_generator/danfe-dacte/lib/volumes";
 import { MaskFields } from "@/utils/MaskFields";
 
 class JsonToDanfe {
-	find_ICMS_prod(imposto: any): Icms_generico {
+	find_ICMS_prod(imposto: Record<string, any>): Icms_generico {
 		const tipoIcms = JSON.stringify(imposto)?.substring(2, 8);
 
 		return {
-			ICMS00: imposto.ICMS00,
-			ICMS10: imposto.ICMS10,
-			ICMS30: imposto.ICMS30,
-			ICMS40: imposto.ICMS40,
-			ICMS51: imposto.ICMS51,
-			ICMS60: imposto.ICMS60,
-			ICMS70: imposto.ICMS70,
-			ICMS90: imposto.ICMS90,
-			ICMS20: imposto.ICMS20,
-			ICMSSN: imposto.ICMSSN ?? {
-				...(imposto.ICMSSN101 ??
-					imposto.ICMSSN102 ??
-					imposto.ICMSSN201 ??
-					imposto.ICMSSN202 ??
-					imposto.ICMSSN500 ??
-					imposto.ICMSSN900 ??
-					imposto.ICMSPart),
+			ICMS00: imposto?.ICMS00,
+			ICMS10: imposto?.ICMS10,
+			ICMS30: imposto?.ICMS30,
+			ICMS40: imposto?.ICMS40,
+			ICMS51: imposto?.ICMS51,
+			ICMS60: imposto?.ICMS60,
+			ICMS70: imposto?.ICMS70,
+			ICMS90: imposto?.ICMS90,
+			ICMS20: imposto?.ICMS20,
+			ICMSSN: imposto?.ICMSSN ?? {
+				...(imposto?.ICMSSN101 ??
+					imposto?.ICMSSN102 ??
+					imposto?.ICMSSN201 ??
+					imposto?.ICMSSN202 ??
+					imposto?.ICMSSN500 ??
+					imposto?.ICMSSN900 ??
+					imposto?.ICMSPart),
 				CST:
-					imposto.ICMSSN102?.CSOSN ??
-					imposto.ICMSSN101?.CSOSN ??
-					imposto.ICMSSN102?.CSOSN ??
-					imposto.ICMSSN201?.CSOSN ??
-					imposto.ICMSSN202?.CSOSN ??
-					imposto.ICMSSN500?.CSOSN ??
-					imposto.ICMSSN900?.CSOSN ??
-					imposto.ICMSPart?.CST,
+					imposto?.ICMSSN102?.CSOSN ??
+					imposto?.ICMSSN101?.CSOSN ??
+					imposto?.ICMSSN102?.CSOSN ??
+					imposto?.ICMSSN201?.CSOSN ??
+					imposto?.ICMSSN202?.CSOSN ??
+					imposto?.ICMSSN500?.CSOSN ??
+					imposto?.ICMSSN900?.CSOSN ??
+					imposto?.ICMSPart?.CST,
 			},
 		}[tipoIcms];
 	}
@@ -360,12 +360,8 @@ class JsonToDanfe {
 			Array.isArray(json.nfeProc?.NFe.infNFe.det)
 		) {
 			for (const item of json.nfeProc.NFe.infNFe.det) {
-				console.log(item);
-
-				console.log(item.imposto);
-
 				const icms = this.find_ICMS_prod(
-					item.imposto.ICMS || item.imposto.ICMSSN,
+					item.imposto?.ICMS || item.imposto?.ICMSSN,
 				);
 
 				console.log(icms);
@@ -384,11 +380,11 @@ class JsonToDanfe {
 						.comBaseDeCalculoDoIcms(maskFields.maskNumber(icms?.vBC?._text))
 						.comValorDoIcms(maskFields.maskNumber(icms?.vICMS?._text))
 						.comValorDoIpi(
-							maskFields.maskNumber(item.imposto.IPI?.IPITrib?.vIPI?._text),
+							maskFields.maskNumber(item.imposto?.IPI?.IPITrib?.vIPI?._text),
 						)
 						.comAliquotaDoIcms(maskFields.maskNumber(icms?.pICMS?._text))
 						.comAliquotaDoIpi(
-							maskFields.maskNumber(item.imposto.IPI?.IPITrib?.pIPI?._text),
+							maskFields.maskNumber(item.imposto?.IPI?.IPITrib?.pIPI?._text),
 						),
 				);
 			}
@@ -428,13 +424,13 @@ class JsonToDanfe {
 					.comValorDoIcms(maskFields.maskNumber(icms?.vICMS?._text))
 					.comValorDoIpi(
 						maskFields.maskNumber(
-							json.nfeProc.NFe.infNFe.det.imposto.IPI?.IPITrib?.vIPI?._text,
+							json.nfeProc.NFe.infNFe.det.imposto?.IPI?.IPITrib?.vIPI?._text,
 						),
 					)
 					.comAliquotaDoIcms(maskFields.maskNumber(icms?.pICMS?._text))
 					.comAliquotaDoIpi(
 						maskFields.maskNumber(
-							json.nfeProc.NFe.infNFe.det.imposto.IPI?.IPITrib?.pIPI?._text,
+							json.nfeProc.NFe.infNFe.det.imposto?.IPI?.IPITrib?.pIPI?._text,
 						),
 					),
 			);

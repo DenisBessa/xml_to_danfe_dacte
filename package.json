@@ -8,11 +8,11 @@
 	"module": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"dependencies": {
-		"@vercel/node": "^3.2.7",
+		"@vercel/node": "^3.2.8",
 		"dotenv": "^16.4.5",
 		"inscricaoestadual": "^0.0.5",
 		"pdfkit": "^0.15.0",
-		"vercel": "^35.2.2",
+		"vercel": "^35.2.3",
 		"xml-js": "^1.6.11"
 	},
 	"devDependencies": {
@@ -28,5 +28,7 @@
 		"fonts-copy": "cp -r ./src/modules/pdf_generator/danfe-dacte/lib/geradores/fontes ./dist/modules/pdf_generator/danfe-dacte/lib/geradores/fontes",
 		"build": "tsc && tsc-alias && npm run fonts-copy"
 	},
-	"files": ["dist/**/*"]
+	"files": [
+		"dist/**/*"
+	]
 }
