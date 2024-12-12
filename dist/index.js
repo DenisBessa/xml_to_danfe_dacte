@@ -9,8 +9,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
+    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
@@ -50,15 +50,15 @@ function handler(req, res) {
                     _b.trys.push([0, 6, , 7]);
                     xml = req.body, authorization = req.headers.authorization;
                     if (!authorization || authorization !== process.env.XML_TO_DANFE_SECRET) {
-                        throw new Error("Missing authorization header");
+                        throw new Error('Missing authorization header');
                     }
                     // check if body is a text
-                    if (typeof xml !== "string" || !xml.length)
-                        throw new Error("Invalid XML");
-                    isDanfe = xml.includes("http://www.portalfiscal.inf.br/nfe");
-                    isDacte = xml.includes("http://www.portalfiscal.inf.br/cte");
+                    if (typeof xml !== 'string' || !xml.length)
+                        throw new Error('Invalid XML');
+                    isDanfe = xml.includes('www.portalfiscal.inf.br/nfe');
+                    isDacte = xml.includes('www.portalfiscal.inf.br/cte');
                     if (!isDanfe && !isDacte)
-                        throw new Error("Invalid XML");
+                        throw new Error('Invalid XML');
                     return [4 /*yield*/, (0, xml_to_json_1.xmlToJson)(xml)];
                 case 1:
                     json = _b.sent();

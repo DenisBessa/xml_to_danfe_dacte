@@ -8,27 +8,25 @@
 	"module": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"dependencies": {
-		"@vercel/node": "^3.2.8",
-		"dotenv": "^16.4.5",
+		"@vercel/node": "4.0.0",
+		"dotenv": "16.4.7",
 		"inscricaoestadual": "^0.0.5",
-		"pdfkit": "^0.15.0",
-		"vercel": "^35.2.3",
+		"pdfkit": "0.15.1",
+		"vercel": "39.2.1",
 		"xml-js": "^1.6.11"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^1.8.3",
-		"@types/pdfkit": "^0.13.4",
+		"@biomejs/biome": "1.9.4",
+		"@types/pdfkit": "0.13.7",
 		"@types/xml-js": "^1.0.0",
 		"tsc-alias": "^1.8.10",
-		"typescript": "^5.5.4"
+		"typescript": "5.7.2"
 	},
 	"license": "MIT",
 	"scripts": {
-		"dev": " bun --hot ./src/index.ts",
+		"dev": "npm run build && vercel dev",
 		"fonts-copy": "cp -r ./src/modules/pdf_generator/danfe-dacte/lib/geradores/fontes ./dist/modules/pdf_generator/danfe-dacte/lib/geradores/fontes",
 		"build": "tsc && tsc-alias && npm run fonts-copy"
 	},
-	"files": [
-		"dist/**/*"
-	]
+	"files": ["dist/**/*"]
 }
